@@ -111,6 +111,10 @@ _rg() {
     "--no-ignore-vcs[don't respect version control ignore files]"
     $no'--ignore-vcs[respect version control ignore files]'
 
+    + '(json)' # json options
+    '--json[output results in a JSON Lines format]'
+    $no"--no-json[output results in the standard format]"
+
     + '(line)' # Line-number options
     {-n,--line-number}'[show line numbers for matches]'
     {-N,--no-line-number}"[don't show line numbers for matches]"
@@ -130,6 +134,10 @@ _rg() {
     + '(mmap)' # mmap options
     '--mmap[search using memory maps when possible]'
     "--no-mmap[don't search using memory maps]"
+
+    + '(multiline)' # multiline options
+    {-U,--multiline}'[permit matching across multiple lines]'
+    $no"--no-multiline[restrict matches to at most one line each]"
 
     + '(only)' # Only-match options
     '(passthru replace)'{-o,--only-matching}'[show only matching part of each line]'
@@ -158,6 +166,7 @@ _rg() {
 
     + stats # Statistics options
     '(--files file-match)--stats[show search statistics]'
+    $no"--no-stats[don't show search statistics]"
 
     + '(text)' # Binary-search options
     {-a,--text}'[search binary files as if they were text]'
@@ -165,6 +174,10 @@ _rg() {
 
     + '(threads)' # Thread-count options
     '(--sort-files)'{-j+,--threads=}'[specify approximate number of threads to use]:number of threads'
+
+    + '(trim)' # trim options
+    '--trim[trim any ASCII whitespace prefix from each line]'
+    $no"--no-trim[don't trim ASCII whitespace prefix from each line]"
 
     + type # Type options
     '*'{-t+,--type=}'[only search files matching specified type]: :_rg_types'
